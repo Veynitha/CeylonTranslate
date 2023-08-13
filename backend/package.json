@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for ceylon translate",
+  "main": "index.js",
+  "scripts": {
+    "test": "start",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Veynitha/CeylonTranslate.git"
+  },
+  "author": "Veynitha Abeykoon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Veynitha/CeylonTranslate/issues"
+  },
+  "homepage": "https://github.com/Veynitha/CeylonTranslate#readme",
+  "dependencies": {
+    "@google-cloud/translate": "^8.0.1",
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
+  }
+}

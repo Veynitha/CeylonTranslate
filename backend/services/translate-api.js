@@ -38,7 +38,9 @@ detectLanguage('ආයුබෝවන්').then((res)=> {
     console.log(err)
 })
 
-const text = "කොළඹට සාදරයෙන් පිළිගනිමු මිත්‍රයා."
+const text = "අද දින කාලගුණය කොහොමද."
+
+
 
 translateText(text, 'en').then((res) => {
     console.log(res)

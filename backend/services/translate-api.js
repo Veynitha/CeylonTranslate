@@ -47,3 +47,6 @@ translateText(text, 'en').then((res) => {
 }).catch((err) => {
     console.log(err)
 })
+
+
+module.exports = {translateText, detectLanguage}

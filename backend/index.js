@@ -1,9 +1,14 @@
 const express = require('express')
+require('dotenv').config()
+
 const cors = require('cors')
 const {db} = require('./db/db')
+
 const routes = require('./routes/routes')
-require('dotenv').config()
-// require('./services/text_to_speech-api')
+
+const fileUpload = require('express-fileupload')
+
+
 const app = express()
 
 const corsOptions = {
@@ -12,9 +17,21 @@ const corsOptions = {
 
 //------------MiddleWares------------//
 app.use(express.json())
+
 app.use(cors(corsOptions))
 
 app.use(routes)
+
+app.use(express.urlencoded({ extended: false }));
+
+app.use(cors())
+
+//file upload
+//app.use(fileUpload())
+
+//translater history
+app.use("/api/translaterhistory", require("./routes/translaterHistoryRoutes"));
+
 
 
 const server = () => {

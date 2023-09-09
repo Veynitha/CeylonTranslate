@@ -15,8 +15,8 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "pagea",
-    path: "/pagea",
+    title: "Pdf Translation",
+    path: "/pdf-Translation",
     icon: <MdConstruction />,
     cName: "nav-text",
   },

@@ -1,0 +1,15 @@
+.pdf-Translate {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10rem;
+    align-items: center;
+}
+.file-input{
+    margin: 10px;
+    padding-left: 10rem;
+}
+
+.handle-upload{
+    margin: 10px;
+    padding-left: 10rem;
+}

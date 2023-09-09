@@ -3,8 +3,8 @@ const cors = require('cors')
 const {db} = require('./db/db')
 const fileUpload = require('express-fileupload')
 require('./services/pdf-reader')
-
 require('dotenv').config()
+const uploadRouter = require('./services/Img-2-Txt');
 
 const app = express()
 
@@ -15,6 +15,8 @@ app.use(cors())
 //file upload
 app.use(fileUpload())
 
+//route for Img-to-txt
+app.use('/', uploadRouter);
 
 const server = () => {
     db()

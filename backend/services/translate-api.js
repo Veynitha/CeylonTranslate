@@ -1,5 +1,5 @@
 const {Translate} = require('@google-cloud/translate').v2;
-require('dotenv').config();
+
 
 //google api credentials
 const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);

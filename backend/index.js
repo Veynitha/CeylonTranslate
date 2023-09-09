@@ -4,9 +4,9 @@ require('dotenv').config()
 const cors = require('cors')
 const {db} = require('./db/db')
 const fileUpload = require('express-fileupload')
-//require('./services/pdf-reader')
 
-require('../backend/services/translate-api')
+const uploadRouter = require('./services/Img-2-Txt');
+
 
 const app = express()
 
@@ -22,6 +22,8 @@ app.use(cors())
 //translater history
 app.use("/api/translaterhistory", require("./routes/translaterHistoryRoutes"));
 
+//route for Img-to-txt
+app.use(uploadRouter);
 
 const server = () => {
     db()

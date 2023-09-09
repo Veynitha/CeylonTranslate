@@ -21,8 +21,8 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "pageb",
-    path: "/pageb",
+    title: "Image Recognition",
+    path: "/imageRecognition",
     icon: <MdConstruction />,
     cName: "nav-text",
   },

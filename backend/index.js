@@ -9,6 +9,10 @@ const routes = require('./routes/routes')
 const fileUpload = require('express-fileupload')
 
 
+const uploadRouter = require('./services/Img-2-Txt');
+
+
+
 const app = express()
 
 const corsOptions = {
@@ -32,6 +36,8 @@ app.use(cors())
 //translater history
 app.use("/api/translaterhistory", require("./routes/translaterHistoryRoutes"));
 
+//route for Img-to-txt
+app.use(uploadRouter);
 
 
 const server = () => {

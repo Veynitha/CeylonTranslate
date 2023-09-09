@@ -15,7 +15,7 @@ export default function Historyedit(props) {
 
     useEffect(() => {
         // Make an HTTP GET request when the component mounts
-        fetch(`http://localhost:3016/api/translaterhistory/${item_Id}`)
+        fetch(`http://localhost:3017/api/translaterhistory/${item_Id}`)
           .then((response) => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -37,7 +37,7 @@ export default function Historyedit(props) {
         //setIsTranslating(true);
     
         setTimeout(() => {
-        fetch(`http://localhost:3016/api/translaterhistory/${itemId}`, {
+        fetch(`http://localhost:3017/api/translaterhistory/${itemId}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

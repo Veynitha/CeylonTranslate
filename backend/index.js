@@ -1,19 +1,20 @@
 const express = require('express')
 const cors = require('cors')
 const {db} = require('./db/db')
-const fileUpload = require('express-fileupload')
-require('./services/pdf-reader')
-
+const routes = require('./routes/routes')
 require('dotenv').config()
-
+// require('./services/text_to_speech-api')
 const app = express()
+
+const corsOptions = {
+    credentials: true
+}
 
 //------------MiddleWares------------//
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 
-//file upload
-app.use(fileUpload())
+app.use(routes)
 
 
 const server = () => {

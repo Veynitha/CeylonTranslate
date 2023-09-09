@@ -31,22 +31,4 @@ const translateText = async(text, targetLanguage) => {
     }
 }
 
-//method calling
-detectLanguage('ආයුබෝවන්').then((res)=> {
-    console.log(res)
-}).catch((err) => {
-    console.log(err)
-})
-
-const text = "අද දින කාලගුණය කොහොමද."
-
-
-
-translateText(text, 'en').then((res) => {
-    console.log(res)
-}).catch((err) => {
-    console.log(err)
-})
-
-
 module.exports = {translateText, detectLanguage}

@@ -13,7 +13,7 @@ import Home from "./pages/Home";
 import PageA from "./pages/PageA";
 import Imt2Txt from './components/Img-2-Txt'
 import Navbar from "./components/Navbar";
-
+import FileUpload from "./components/FileUpload";
 
 import Edit from "./components/Historyedit"
 
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         element:<Translatertestpage />
       },
       {
-        path: "pagea",
-        element: <PageA />,
+        path: "pdf-Translation",
+        element: <FileUpload />,
       },
       {
         path: "imageRecognition",

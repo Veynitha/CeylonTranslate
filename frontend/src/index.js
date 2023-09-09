@@ -11,7 +11,7 @@ import Translatertestpage from "./pages/Translationsarindu";
 import TranslatorHistory from "./pages/TranslatorHistory";
 import Home from "./pages/Home";
 import PageA from "./pages/PageA";
-import PageB from "./pages/PageB";
+import Imt2Txt from './components/Img-2-Txt'
 import Navbar from "./components/Navbar";
 
 
@@ -37,8 +37,8 @@ const router = createBrowserRouter([
         element: <PageA />,
       },
       {
-        path: "pageb",
-        element: <PageB />,
+        path: "imageRecognition",
+        element: <Imt2Txt />,
       },
       {
         path: "home",

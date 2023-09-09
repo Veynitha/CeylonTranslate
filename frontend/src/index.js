@@ -1,17 +1,61 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import * as React from "react";
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+
+import Translatertestpage from "./pages/Translationsarindu";
+import TranslatorHistory from "./pages/TranslatorHistory";
+import Home from "./pages/Home";
+import PageA from "./pages/PageA";
+import PageB from "./pages/PageB";
+import Navbar from "./components/Navbar";
+
+
+import Edit from "./components/Historyedit"
+
+const AppLayout = () => (
+  <>
+    <Navbar/>
+    <Outlet />
+  </>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element:<Translatertestpage />
+      },
+      {
+        path: "pagea",
+        element: <PageA />,
+      },
+      {
+        path: "pageb",
+        element: <PageB />,
+      },
+      {
+        path: "home",
+        element: <Home/>,
+      },
+      {
+        path: "translatorhistory",
+        element: <TranslatorHistory />,
+      },
+      {
+        path: "historyedit/:Id",
+        element: <Edit />,
+      },
+    ],
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);

@@ -12,6 +12,7 @@ const fileUpload = require('express-fileupload')
 const uploadRouter = require('./services/Img-2-Txt');
 
 
+require('./services/textToSpeech')
 
 const app = express()
 
@@ -29,6 +30,8 @@ app.use(routes)
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors())
+
+app.use('/mp3', express.static('./output.mp3'));
 
 //file upload
 //app.use(fileUpload())

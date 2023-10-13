@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFDocument, rgb} from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import './fileUpload.css'
 
@@ -72,22 +72,26 @@ function FileUpload() {
 
     return (
         <div className='pdf-Translate'>
-            <h2>File Uploading in React JS</h2>
-            <div className='getpdf'>
-                <div className="file-input">
-                    <input type='file' name='file' onChange={handleFile} />
-                </div>
-                <div className="handle-upload">
-                    <button onClick={(e) => handleUpload(e)}>Upload</button>
-                </div>
-            </div>
-            <div className="displayTransaltedText">
-                <p>{translatedText}</p>
-            </div>
-            <div className="download-Pdf">
-                <button onClick={(e) => handleDownload(e)}>download</button>
+            <h2>File Translation</h2>
+        <div className='getpdf'>
+            {/* <div className="file-input">
+                <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
+            </div> */}
+            <label className="file-input-label">
+                <span className="file-input-label-text">Choose File</span>
+                <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
+            </label>
+            <div className="handle-upload">
+                <button className="handle-upload-upload-button" onClick={(e) => handleUpload(e)}>Upload</button>
             </div>
         </div>
+        <div className="displayTransaltedText">
+            <p>{translatedText}</p>
+        </div>
+        <div className="download-Pdf">
+            <button className='download-Pdf-button' onClick={(e) => handleDownload(e)}>Download</button>
+        </div>
+    </div>
     )
 }
 

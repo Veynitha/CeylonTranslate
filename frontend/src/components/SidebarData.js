@@ -1,34 +1,37 @@
 import React from "react";
 import { IoLanguage } from "react-icons/io5";
 import { FaHistory } from "react-icons/fa";
-import { MdConstruction} from "react-icons/md";
-
-
-
-
+import { MdConstruction, MdOutlineImageSearch } from "react-icons/md";
+import { BsFiletypePdf } from "react-icons/bs";
 
 export const SidebarData = [
   {
     title: "Translater",
-    path: "/",
+    path: "/home",
     icon: <IoLanguage />,
     cName: "nav-text",
   },
   {
     title: "Pdf Translation",
     path: "/pdf-Translation",
-    icon: <MdConstruction />,
+    icon: <BsFiletypePdf />,
     cName: "nav-text",
   },
   {
     title: "Image Recognition",
     path: "/imageRecognition",
+    icon: <MdOutlineImageSearch />,
+    cName: "nav-text",
+  },
+  {
+    title: "Voice To Text",
+    path: "/voicetotexttage",
     icon: <MdConstruction />,
     cName: "nav-text",
   },
   {
-    title: "Home",
-    path: "/home",
+    title: "Community",
+    path: "/allpost",
     icon: <MdConstruction />,
     cName: "nav-text",
   },
@@ -39,3 +42,4 @@ export const SidebarData = [
     cName: "nav-text",
   },
 ];
+

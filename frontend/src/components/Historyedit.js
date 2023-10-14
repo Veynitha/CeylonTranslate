@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate} from "react-router-dom";
 
 import './historyedit.css'
 
@@ -10,7 +9,6 @@ export default function Historyedit(props) {
 
     // const item_Id = useParams().Id;
     const item_Id = props.value
-    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -64,28 +62,21 @@ export default function Historyedit(props) {
     <div className='edit-page'>
         <div className='edit-page-box'>
            
-            {/* <button onClick={() => navigate("/translatorhistory")}>Home</button> */}
-
         <div className='container-main'> 
             <div className='history-edit-title'>
-                <h1>History Edit</h1>  
+                <h1>Translate</h1>  
             </div> 
         
-        <div class = "container-edit">
+        <div className = "container-edit">
         
         <div className = 'transinputtext'>
 
-          {/* <div className = 'transinputtextpart1'>
-          User entered Language: {}
           
-          </div> */}
 
           <div className = 'transinputtextpart1 gg222'>
-            {/* <label class="upper-left-text">Enter Text:</label> */}
             <div className='transbox inputtext'>
 
             <textarea placeholder = "Enter Text here" value={inputText} onChange={e => setInputText(e.target.value)}/>
-            {/* <input type="text" value={inputText} onChange={e => setInputText(e.target.value)} /> */}
             </div>
           </div>       
 
@@ -100,27 +91,12 @@ export default function Historyedit(props) {
 
         <div className = 'transinputtext'> 
 
-          {/* <div className = 'transinputtextpart1'>
-            <div className='transbox1'>
-              <label >Target Language:</label>
-              <select>
-                <option disabled={true} value="">Choose a language</option>
-                <option value="si">Sinhala</option>
-                <option value="en">English</option>
-                <option value="es">Spanish</option>
-                <option value="fr">French</option>
-                <option value="ja">Japanese</option>
-              </select>
-            </div>
-
-          </div> */}
+          
 
           <div className = 'transinputtextpart1 gg222'>
-          {/* <label class="upper-left-text">Translated Text:</label> */}
             <div className='transbox inputtext'>
               <textarea disabled="true" placeholder = "Translated Text" value={translatedtext}/>
 
-              {/* <p>{translatedtext}</p> */}
             </div>
           </div> 
 

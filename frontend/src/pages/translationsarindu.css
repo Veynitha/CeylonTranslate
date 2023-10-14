@@ -1,3 +1,9 @@
+
+
+body {
+  font-family: 'CustomFont';
+}
+  
   .container {
     display: flex; /* Make the container a flex container */
     justify-content: center; /* Horizontal alignment: space between */
@@ -60,10 +66,6 @@
 
   }
 
-  /* .transinputtextpart1.gg222 p{
-    padding: 10px;
-  } */
-
   .transinputtextpart1.gg222 textarea {
    
     border: 1px solid #ccc;
@@ -91,16 +93,9 @@
   .transinputtextpart1.gg222 textarea::placeholder {
     color: #999; /* Placeholder text color */
   }
-  
-
-
-  /* .upper-left-text {
-    position: absolute; 
-    top: 10px; 
-    left: 10px; 
-    margin: 0; 
-    padding: 0;
-  } */
+  .transinputtextpart1.imagtotextpage{
+    border: solid 1px #ccc;
+  }
 
   .center-button {
     display: block;
@@ -111,9 +106,9 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 100px;
-    height: 50px;
-    font-size: 15px;
+    width: 150px;
+    height: 60px;
+    font-size: 18px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 
   }
@@ -136,10 +131,6 @@
     border: none;
 }
 
-
-
-
-
 /* Reset default table styles */
 table {
   border-collapse: collapse;
@@ -155,10 +146,13 @@ thead {
   color: white;
 }
 
+th {
+  padding: 10px;
+  text-align: center;
+  /* border: 1px solid #000000; /* Add a border to table cells */
+}
 
-
-
-th, td {
+td {
   padding: 10px;
   text-align: left;
   /* border: 1px solid #000000; /* Add a border to table cells */
@@ -190,43 +184,35 @@ td:last-child {
 }
 
 /* Center-align text in the date cell */
-td:nth-child(5) {
+ td:nth-child(3) {
   text-align: center;
-}
-td:nth-child(2) {
-  text-align: center;
-}
-td:nth-child(4) {
-  text-align: center;
-}
-td:nth-child(6) {
-  text-align: center;
+  width: 150px;
+
 }
 
-th:nth-child(5){
+td:nth-child(4) {
   text-align: center;
-  width: 100px;
+  width: 50px;
 }
-th:nth-child(6){
+td:nth-child(5) {
+  text-align: center;
   width: 50px;
 }
 
-/* Hide table border for the last cell in each row */
-/* td:last-child {
-  border: none;
-} */
 
 /* Hover effect for table rows */
 tbody tr:hover {
   background-color: #ddd;
 
-  .historydeleteicon {
-    color: #fb0505;
-  }
-  .historyediticon{
-    color: #fb0505;
-  }
+}
 
+.historydeleteicon:hover {
+  cursor: pointer;
+  color: #fb0505;
+}
+.historyediticon:hover{
+  cursor: pointer;
+  color: #16d426;
 }
 
 
@@ -234,14 +220,14 @@ tbody tr:hover {
 
 .upperbuttons{
   float: right;
-  margin-right: 5.5%;
+  margin-right: 6%;
   margin-bottom: 20px;
 }
 
 /* Style the "Delete All" button */
 .btn-ad-deleteall {
   background-color: #ffffff; /* Button background color */
-  color: #ff0000; /* Text color */
+  color: #fb0505; /* Text color */
   border: solid 2px; /* Remove button border */
   padding: 10px 20px; /* Add padding around the text */
   font-size: 16px; /* Button text size */
@@ -252,12 +238,12 @@ tbody tr:hover {
   width: 150px;
   height: 50px;
 }
-
-.deleting {
-  background-color: #ff0000;
+.btn-ad-deleteall:hover {
+  background-color: #fb0505;
   color: #ffffff;
-  cursor: not-allowed;
-  border: none;
+  transition: background-color 0.5s, color 0.3s;
+  border-color: #fb0505;
+
 }
 
 .icon {
@@ -273,9 +259,16 @@ tbody tr:hover {
   font-size: 16px; /* Button text size */
   cursor: pointer; /* Change cursor to pointer on hover */
   border-radius: 5px; /* Add rounded corners */
-  transition: background-color 0.3s ease; /* Smooth background color transition on hover */
   height: 50px;
   margin-right: 10px;
+
+}
+
+.btn-ad-downloadreport:hover{
+  background-color: #04195d; /* Button background color */
+  color: #ffffff; /* Text color */
+  transition: background-color 0.5s, color 0.3s;
+  border-color: #04195d;
 
 }
 
@@ -286,6 +279,8 @@ tbody tr:hover {
 
 .topictext{
   margin-left: 5.5%;
+  margin-bottom: 30px;
+  font-size: 20px;
 }
 
 .translating{
@@ -321,3 +316,65 @@ tbody tr:hover {
   font-weight: bold;
 }
 
+/* Style for the container div */
+.filterbox {
+  margin-left: 6.2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Style for the date input */
+.historydatebox {
+  padding: 5px;
+  width: 250px;
+  text-align: center;
+    border: 1px solid #04195d;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Style for the filter button */
+.historyfilterbutton {
+  background-color: #04195d; /* Button background color */
+  color: #ffffff; /* Text color */
+  border: solid 2px #04195d; /* Remove button border */
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.historyfilterbutton:hover {
+  background-color: #ffffff;
+  color: #04195d;
+  transition: background-color 0.5s, color 0.3s;
+  border-color: #04195d;
+}
+
+/* Style for the clear button */
+.historyclearbutton {
+  background-color: #ffffff; /* Button background color */
+  color: #fb0505; /* Text color */
+  border: solid 2px; /* Remove button border */
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.historyclearbutton:hover {
+  background-color: #fb0505;
+  color: #ffffff;
+  transition: background-color 0.5s, color 0.3s;
+  border-color: #fb0505;
+}
+
+.headingrow{
+  display: flex;
+  justify-content: space-between; 
+}

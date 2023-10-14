@@ -1,13 +1,54 @@
-/* .pdf-Translate {
+ 
+  /* Styling for the file input section */
+  .getpdf {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 10rem;
+    justify-content: center;
     align-items: center;
-}
-.file-input{
-    margin: 10px;
-    padding-left: 10rem;
-}
+    margin-bottom: 20px;
+  }
+  
+  .file-input {
+    margin-right: 10px;
+  }
+  
+  
+  /* Styling for the upload button */
+  .handle-upload-upload-button {
+    background-color: #04195d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  
+  /* Styling for the translated text */
+  .displayTransaltedText p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    height: 7rem;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Styling for the download button */
+  .download-Pdf-button {
+    background-color: #04195d;
+    color: #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  /* Optional: Hover effect for buttons */
+  .handle-upload-upload-button:hover,
+  .download-Pdf-button:hover {
+    background-color: #0056b3;
+  }
+
 
 .handle-upload{
     margin: 10px;
@@ -79,6 +120,7 @@
   .download-Pdf-button:hover {
     background-color: #0056b3;
   }
+
 
   /* ======================================================= */
   /* Styling for the file input element */

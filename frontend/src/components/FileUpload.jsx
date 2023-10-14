@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFDocument, rgb} from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import './fileUpload.css'
 import AudioPlayer from './AudioPlayer'
@@ -112,9 +112,17 @@ function FileUpload() {
             <div className="textToSpeech">
                 <input className='textToSpeech-input' type='text' name='text' placeholder='Enter Text' onChange={(e) => setInputText(e.target.value)} />
                 <button className='textToSpeech-button' onClick={(e) => handleTextToSpeech(e)}>Text to Speech</button>
+
             </div>
             <AudioPlayer />
         </div>
+        <div className="displayTransaltedText">
+            <p>{translatedText}</p>
+        </div>
+        <div className="download-Pdf">
+            <button className='download-Pdf-button' onClick={(e) => handleDownload(e)}>Download</button>
+        </div>
+    </div>
     )
 }
 

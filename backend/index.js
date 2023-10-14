@@ -1,16 +1,23 @@
-const express = require("express");
-require("dotenv").config();
-const cors = require("cors");
-const { db } = require("./db/db");
-const routes = require("./routes/routes");
-const fileUpload = require("express-fileupload");
-const uploadRouter = require("./services/Img-2-Txt");
+const express = require('express')
+require('dotenv').config()
+
+const cors = require('cors')
+const {db} = require('./db/db')
+
+const routes = require('./routes/routes')
+
+const fileUpload = require('express-fileupload')
 
 const authRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 
-const app = express();
+const uploadRouter = require('./services/Img-2-Txt');
+
+require('./services/textToSpeech')
+
+const app = express()
+
 const corsOptions = {
   credentials: true,
 };
@@ -25,6 +32,8 @@ app.use(routes);
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
+
+app.use('/mp3', express.static('./output.mp3'));
 
 //file upload
 //app.use(fileUpload())

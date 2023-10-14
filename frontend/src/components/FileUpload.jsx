@@ -3,10 +3,12 @@ import axios from 'axios'
 import { PDFDocument, rgb} from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import './fileUpload.css'
+import AudioPlayer from './AudioPlayer'
 
 function FileUpload() {
     const [file, setFile] = useState(null)
     const [translatedText, setTranslatedText] = useState("")
+    const [inputText, setInputText] = useState("")
 
     const handleFile = (e) => {
         setFile(e.target.files[0])
@@ -70,20 +72,49 @@ function FileUpload() {
         a.click();
     }
 
+    const handleTextToSpeech = async (e) => {
+        if (inputText) {
+            const requestText = { text: inputText }
+            await axios
+                .get(`http://localhost:3017/api/Text-to-Speech?text=${requestText.text}`)
+                .then((response) => {
+                    console.log("Text Synthesized Successfully");
+                })
+                .catch((error) => {
+                    console.error("Text-to-Speech error:", error);
+                });
+        } else {
+            console.error("Text-to-Speech error: No text to synthesize");
+        }
+    };
+
     return (
         <div className='pdf-Translate'>
             <h2>File Translation</h2>
-        <div className='getpdf'>
-            {/* <div className="file-input">
-                <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
-            </div> */}
-            <label className="file-input-label">
-                <span className="file-input-label-text">Choose File</span>
-                <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
-            </label>
-            <div className="handle-upload">
-                <button className="handle-upload-upload-button" onClick={(e) => handleUpload(e)}>Upload</button>
+            <div className='getpdf'>
+                {/* <div className="file-input">
+                    <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
+                </div> */}
+                <label className="file-input-label">
+                    <span className="file-input-label-text">Choose File</span>
+                    <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
+                </label>
+                <div className="handle-upload">
+                    <button className="handle-upload-upload-button" onClick={(e) => handleUpload(e)}>Upload</button>
+                </div>
             </div>
+            <div className="displayTransaltedText">
+                <p>{translatedText}</p>
+            </div>
+            <div className="download-Pdf">
+                <button className='download-Pdf-button' onClick={(e) => handleDownload(e)}>Download</button>
+            </div>
+            <div className="textToSpeech">
+                <input className='textToSpeech-input' type='text' name='text' placeholder='Enter Text' onChange={(e) => setInputText(e.target.value)} />
+                <button className='textToSpeech-button' onClick={(e) => handleTextToSpeech(e)}>Text to Speech</button>
+
+            </div>
+            <AudioPlayer />
         </div>
         <div className="displayTransaltedText">
             <p>{translatedText}</p>

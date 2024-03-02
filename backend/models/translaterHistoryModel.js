@@ -7,6 +7,7 @@ const historyschema = new Schema({
   translatedtext: { type: String },
   translatedtextlanguage: { type: String },
   date: { type: String },
+  userid: { type: String}
 });
 
 module.exports = mongoose.model("Translation_history", historyschema);

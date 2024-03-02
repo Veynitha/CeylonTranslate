@@ -85,6 +85,8 @@ function CreatePost() {
 
   return (
     <div class="container mt-5">
+       <div className="card" style={{width: "50rem", height: "35rem", backgroundColor: "lightblue"}}>
+        
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h2 class="text-center mb-4">Create a New Post</h2>
@@ -96,12 +98,13 @@ function CreatePost() {
                 </div>
                 <div class="mb-3">
                     <label htmlFor="content" class="form-label">Content:</label>
-                    <textarea class="form-control" id="content" value={content} onChange={handleContentChange} rows="4"></textarea>
+                    <textarea class="form-control" id="content" value={content} onChange={handleContentChange} rows="8"></textarea>
                     {contentError && <p class="text-danger mt-2">{contentError}</p>}
                 </div>
                 <button type="submit" class="btn btn-primary">Create Post</button>
             </form>
         </div>
+    </div>
     </div>
 </div>
 

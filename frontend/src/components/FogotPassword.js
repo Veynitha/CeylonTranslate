@@ -49,7 +49,7 @@ export default function FogotPassword() {
             const response = await axios.post('http://localhost:3017/auth/sendVerificationCode', { email, key });
 
             const verificationCode = response.data.Digits;
-            alert("Verification code sent: " + verificationCode);
+            alert("Verification code sent: ");
 
             setVerificationCode(verificationCode);
 
@@ -87,7 +87,7 @@ export default function FogotPassword() {
             <h1 className="mb-4">Change Password</h1>
 
             <div className="mb-3">
-                <label htmlFor="userName" className="form-label">User Name</label>
+                <label htmlFor="userName" className="form-label">User Email</label>
                 <input
                     type="email"
                     className="form-control"

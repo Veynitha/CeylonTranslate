@@ -18,7 +18,7 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Image Recognition",
+    title: "Image to Text Translation",
     path: "/imageRecognition",
     icon: <MdOutlineImageSearch />,
     cName: "nav-text",

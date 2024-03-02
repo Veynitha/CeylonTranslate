@@ -7,7 +7,7 @@ const setTranslaterHistory = async (req, res) => {
   let userenterdtextlanguage;
   let translatedtext;
 
-  const { userenterdtext, translatedtextlanguage } = req.body;
+  const { userenterdtext, translatedtextlanguage, userid } = req.body;
 
   try {
     userenterdtextlanguage = await translater.detectLanguage(userenterdtext);
@@ -34,6 +34,7 @@ const setTranslaterHistory = async (req, res) => {
     translatedtext,
     translatedtextlanguage,
     date: dateOnly,
+    userid,
   });
 
   console.log(createdHistory);
@@ -56,10 +57,14 @@ const setTranslaterHistory = async (req, res) => {
 // -------------------------------------------- read history --------------------------------------------
 const getTranslaterHistory = async (req, res) => {
   let items;
+  const { userid } = req.query;
+  console.log(userid)
   try {
-    items = await translaterhistory.find({});
+    // items = await translaterhistory.find({});
+    items = await translaterhistory.find({ userid: userid });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ error: "Server Error" });
   }
   res.json({
     items: items.map((translaterhistory) =>

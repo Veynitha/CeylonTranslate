@@ -21,9 +21,18 @@ const TranslatorHistory = () => {
     useState(false);
   const [data, setData] = useState("");
   const [inputdate, setInputdate] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
+
+
+  const [user, setUser] = useState('');
 
   useEffect(() => {
-    fetch("http://localhost:3017/api/translaterhistory")
+    setUser(localStorage.getItem('userid'));
+  })
+
+  useEffect(() => {
+    if (user) {
+    fetch(`http://localhost:3017/api/translaterhistory?userid=${encodeURIComponent(user)}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -39,16 +48,18 @@ const TranslatorHistory = () => {
         // Handle errors
         setError(error.message);
       });
-  }, [isOpen]);
+    }
+  }, [isOpen,user]);
 
   const filterDataByDate = (dateToFilter) => {
     if (dateToFilter == null) {
-      console.log("error");
+      setErrorMessage('Please fill in the date before filtering.');
     } else {
       const filteredItems = translatorData2.filter(
         (item) => item.date === dateToFilter
       );
       setTranslatorData(filteredItems);
+      setErrorMessage('');
     }
   };
 
@@ -204,7 +215,7 @@ const TranslatorHistory = () => {
           >
             Filter
           </button>
-
+          
           <button
             className="historyclearbutton"
             onClick={() => {
@@ -213,8 +224,11 @@ const TranslatorHistory = () => {
           >
             Clear
           </button>
+          {errorMessage && <p>{errorMessage}</p>}
         </div>
+        
       </div>
+      
       {error ? (
         <p>Error: {error}</p>
       ) : (

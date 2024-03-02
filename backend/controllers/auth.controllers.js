@@ -48,8 +48,9 @@ const login = async (req, res) => {
         // Generate a JWT token
         const token = jwt.sign({ userId: user._id }, config.secretKey);
         const role = user.role
+        const userIdd = user._id
 
-        res.json({ token, role });
+        res.json({ token, role, userIdd });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Something went wrong' });

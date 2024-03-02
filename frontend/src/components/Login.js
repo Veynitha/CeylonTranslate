@@ -25,10 +25,12 @@ export default function Login() {
             const response = await axios.post('http://localhost:3017/auth/login', { email, password });
             const token = response.data.token;
             const role = response.data.role
+            const userIdd = response.data.userIdd
 
             // Store the token in local storage
             localStorage.setItem('token', token);
             localStorage.setItem('role', role);
+            localStorage.setItem('userid', userIdd);
 
             // alert("Login success" + role)
 
@@ -59,6 +61,7 @@ export default function Login() {
                     // Store the token in local storage
                     localStorage.setItem('token', token);
                     localStorage.setItem('role', role);
+                   
 
 
 
@@ -77,7 +80,7 @@ export default function Login() {
 
         } catch (error) {
 
-            alert("Login Unsucess")
+            alert("Invalid Credentials")
             console.log(error);
         }
     };
@@ -96,7 +99,9 @@ export default function Login() {
 
 
     return (
+        
         <div className="container d-flex justify-content-center align-items-center vh-100">
+            
             <div className="card" style={{width: "50rem", height: "30rem"}}>
                 <div className="row g-0">
                     <div className="col-md-6">
@@ -104,7 +109,7 @@ export default function Login() {
                     </div>
                     <div className="col-md-6">
                         <div className="card-body">
-                            <h1 className="card-title text-center mb-4">Login Form</h1>
+                            <h1 className="card-title text-center mb-4"> Translator Login </h1>
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">Email</label>

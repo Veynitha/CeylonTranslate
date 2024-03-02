@@ -3,10 +3,12 @@ import axios from 'axios'
 import { PDFDocument, rgb} from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import './fileUpload.css'
+import AudioPlayer from './AudioPlayer'
 
 function FileUpload() {
     const [file, setFile] = useState(null)
     const [translatedText, setTranslatedText] = useState("")
+    
 
     const handleFile = (e) => {
         setFile(e.target.files[0])
@@ -70,26 +72,32 @@ function FileUpload() {
         a.click();
     }
 
+
+
     return (
+        <div>
         <div className='pdf-Translate'>
             <h2>File Translation</h2>
-        <div className='getpdf'>
-            {/* <div className="file-input">
-                <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
-            </div> */}
-            <label className="file-input-label">
-                <span className="file-input-label-text">Choose File</span>
-                <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
-            </label>
-            <div className="handle-upload">
-                <button className="handle-upload-upload-button" onClick={(e) => handleUpload(e)}>Upload</button>
+            <div className='getpdf'>
+                {/* <div className="file-input">
+                    <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
+                </div> */}
+                <label className="file-input-label">
+                    <span className="file-input-label-text">Choose File</span>
+                    <input className='file-input-choose-file' type='file' name='file' onChange={handleFile} />
+                </label>
+                <div className="handle-upload">
+                    <button className="handle-upload-upload-button" onClick={(e) => handleUpload(e)}>Upload</button>
+                </div>
             </div>
-        </div>
-        <div className="displayTransaltedText">
-            <p>{translatedText}</p>
-        </div>
-        <div className="download-Pdf">
-            <button className='download-Pdf-button' onClick={(e) => handleDownload(e)}>Download</button>
+            <div className="displayTransaltedText">
+                <p>{translatedText}</p>
+            </div>
+            <div className="download-Pdf">
+                <button className='download-Pdf-button' onClick={(e) => handleDownload(e)}>Download</button>
+            </div>
+            
+            
         </div>
     </div>
     )

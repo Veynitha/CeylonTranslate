@@ -116,7 +116,6 @@ function App() {
       <Router>
         <Routes>
 
-
           <Route path='/' element={<Login />} />
           <Route path="/adminRegister" element={<AdminSideRegister />} />
           <Route path='/login' element={<Login />} />

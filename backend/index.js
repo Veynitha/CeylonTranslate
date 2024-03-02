@@ -28,6 +28,7 @@ app.use(cors());
 
 //file upload
 //app.use(fileUpload())
+app.use('/mp3', express.static('./output.mp3'));
 
 //translater history
 app.use("/api/translaterhistory", require("./routes/translaterHistoryRoutes"));

@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import jwt from 'jwt-decode'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import jsPDF from 'jspdf';
+
 
 
 
@@ -200,6 +202,44 @@ function SelectedPost(props) {
         // Clear the reply textarea
         setEditComment({ id: null, text: '' });
     };
+    const generatePDF = () => {
+        const doc = new jsPDF();
+        const title = `Title: ${post.title}`;
+        const name = `Name: ${post.name}`;
+    
+        // Calculate remaining space on the first page after adding title and name
+        const remainingSpaceOnFirstPage = doc.internal.pageSize.height - 60; // Assuming 20 for title, 20 for name, and 20 for margins
+    
+        // Add title and name to the first page
+        doc.text(20, 20, title);
+        doc.text(20, 40, name);
+    
+        // Start content on the first page at 60 units from the top
+        let currentYPosition = 60;
+    
+        // Split content into lines that fit within the width of the page
+        const contentLines = doc.splitTextToSize(post.content, 180); // Adjust the width for content according to your needs
+    
+        // Iterate through content lines and add them to the PDF
+        for (let i = 0; i < contentLines.length; i++) {
+            // Check if there is enough space on the current page for the next line
+            if (currentYPosition + 10 <= remainingSpaceOnFirstPage) {
+                doc.text(20, currentYPosition, contentLines[i]); // Add content line to the current page
+                currentYPosition += 10; // Move to the next line
+            } else {
+                // If there isn't enough space on the current page, start a new page
+                doc.addPage();
+                currentYPosition = 20; // Reset Y position for the new page
+                doc.text(20, currentYPosition, contentLines[i]); // Add content line to the new page
+                currentYPosition += 10; // Move to the next line
+            }
+        }
+    
+        doc.save('post.pdf'); // Save the PDF with the name 'post.pdf'
+    };
+    
+    
+    
 
 
 
@@ -208,7 +248,7 @@ function SelectedPost(props) {
         <div class="container mt-5">
           
     <div class="row">
-    <button className="backbutton_post" onClick={() => {navigate('/allpost')}}>back</button>
+    {/* <button className="backbutton_post" onClick={() => {navigate('/allpost')}}>back</button> */}
         <div class="col-md-8 mx-auto">
             <h1>{post.title}</h1>
             <pre style={{ whiteSpace: 'pre-wrap' }}>{post.content}</pre>
@@ -218,17 +258,24 @@ function SelectedPost(props) {
                 
 
             <div class="mt-4">
+            {post.name === name && (
                 <button class="btn btn-danger me-2" onClick={handleDeletePost}>
                     Delete Post
                 </button>
+                )}
+                {post.name === name && (
                 <button class="btn btn-primary" onClick={handleUpdatePost}>
                     Edit Post
                 </button>
+                 )}
             </div>
 
             <hr class="my-4" />
 
             <h2 class="mt-4">Reviews and Comments</h2>
+            <button class="btn btn-secondary btn-sm ms-2" onClick={generatePDF}>
+                Generate PDF
+            </button>
             <hr class="my-4" />
             <div class="mt-4">
                 <h3>Add a Comment</h3>
@@ -252,12 +299,16 @@ function SelectedPost(props) {
                         <div class="comment-details">
                            
                             by: {comment.name}
-                            <button class="btn btn-link" onClick={() => handleDeleteComment(comment._id)}>
-                                Delete 
+                            {comment.name === name && (
+                <button className="btn btn-link" onClick={() => handleDeleteComment(comment._id, comment.name)}>
+                                Delete
                             </button>
+                            )}
+                            {comment.name === name && (
                             <button class="btn btn-link" onClick={() => handleEditComment(comment._id, comment.text)}>
                                 Edit 
                             </button>
+                             )}
                             <button class="btn btn-secondary btn-sm ms-2" onClick={() => handleReplyComment(comment._id)}>
                                 Reply
                             </button>

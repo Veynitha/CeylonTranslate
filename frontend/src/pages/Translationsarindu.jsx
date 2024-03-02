@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoLanguage } from "react-icons/io5";
 import { FaExchangeAlt } from "react-icons/fa";
 import Spineer from "../components/Spinner";
@@ -10,8 +10,17 @@ const Translationsarindu = () => {
   const [translatedtext, setTranslatedText] = useState("");
   const [targetLang, setTargetLang] = useState("");
   const [isTranslating, setIsTranslating] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    setUser(localStorage.getItem('userid'));
+
+  },[])
 
   const handleTranslate = (e) => {
+    if(targetLang != 0){
     e.preventDefault();
     setIsTranslating(true);
 
@@ -23,6 +32,7 @@ const Translationsarindu = () => {
       body: JSON.stringify({
         userenterdtext: inputText,
         translatedtextlanguage: targetLang,
+        userid: user,
       }),
     })
       .then((response) => response.json())
@@ -36,6 +46,12 @@ const Translationsarindu = () => {
         setIsTranslating(false);
       })
       .catch((error) => console.error("Translation error:", error));
+
+      setErrorMessage('');
+    }
+    else{
+      setErrorMessage('Please select language before translate.');
+    }
   };
 
   const changetext = () => {
@@ -58,7 +74,9 @@ const Translationsarindu = () => {
       <div className="container">
         <div className="transinputtext">
           <div className="transinputtextpart1">
-            User entered Language: {inputTextLanguage}
+            {/* User entered Language: {inputTextLanguage} */}
+            {errorMessage && <p>{errorMessage}</p>}
+
           </div>
 
           <div className="transinputtextpart1 gg222">
@@ -98,6 +116,7 @@ const Translationsarindu = () => {
                 <option value="en">English</option>
               </select>
             </div>
+            
           </div>
 
           <div className="transinputtextpart1 gg222">

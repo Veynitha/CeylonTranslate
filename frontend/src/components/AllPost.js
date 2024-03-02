@@ -44,51 +44,71 @@ function AllPost() {
   );
 
   return (
-    <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8 mx-auto">
-            <h2 class="text-center mb-4">Explore the Articles</h2>
-            <button class="btn btn-primary mb-3" onClick={() => {navigate(`/createpost`);}}>
-                Create Post
-            </button>
-          
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Search Posts" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-            </div>
-            <div>
-                {filteredPosts.map((post) => (
-                    <div class="card mb-4" key={post._id}>
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <a href="#" class="link-dark" onClick={() => navigateToSelectedPost(post._id)}>
-                                    {post.title}
-                                </a>
-                            </h5>
-                            <p class="card-text">
-                                {post.content.length > 200 ? (
-                                    <>
-                                        {post.content.slice(0, 200)}
-                                        <span id={`read-more-${post._id}`} class="read-more">
-                                            {post.content.slice(200)}
-                                        </span>
-                                        <span id={`read-more-btn-${post._id}`} class="read-more-btn" onClick={() => handleReadMoreClick(post._id)}>
-                                        <strong>...Read More</strong>
-                                        </span>
-                                    </>
-                                ) : (
-                                    <pre style={{ whiteSpace: 'pre-wrap' }}>{post.content}</pre>
-                                )}
-                            </p>
-                            <div className="text-muted" style={{ fontSize: '0.8rem' }}>
-                              by: {post.name}
-                                </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
+    <div style={{ padding: '20px', backgroundColor: '#f8f9fa' }}>
+    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '20px', fontSize: '28px' }}>
+        Explore the Articles
+      </h2>
+      <button
+        style={{ display: 'block', margin: '0 auto', marginBottom: '20px', padding: '10px 20px', fontSize: '18px' }}
+        className="btn btn-primary"
+        onClick={() => {
+          navigate(`/createpost`);
+        }}
+      >
+        Create Post
+      </button>
+
+      <div style={{ marginBottom: '20px' }} className="input-group">
+        <input
+          type="text"
+          style={{ flex: '1', padding: '10px', fontSize: '16px' }}
+          className="form-control"
+          placeholder="Search Posts"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button
+          style={{ marginLeft: '10px', fontSize: '16px' }}
+          className="btn btn-danger"
+          onClick={() => setSearchQuery('')}
+        >
+          Clear
+        </button>
+      </div>
+
+      <hr style={{ marginBottom: '20px' }} />
+
+      <div>
+        {filteredPosts.map((post) => (
+          <div key={post._id} style={{ marginBottom: '20px', padding: '15px', border: '1px solid #ccc', borderRadius: '5px' }}>
+            <h5 style={{ fontSize: '22px', marginBottom: '10px' }}>
+              <a href="#" style={{ color: '#343a40', textDecoration: 'none' }} onClick={() => navigateToSelectedPost(post._id)}>
+                {post.title}
+              </a>
+            </h5>
+            <p style={{ fontSize: '16px', marginBottom: '10px' }}>
+              {post.content.length > 200 ? (
+                <>
+                  {post.content.slice(0, 200)}
+                  <span id={`read-more-${post._id}`} className="read-more">
+                    {post.content.slice(200)}
+                  </span>
+                  <span id={`read-more-btn-${post._id}`} className="read-more-btn" onClick={() => handleReadMoreClick(post._id)}>
+                    <strong>...Read More</strong>
+                  </span>
+                </>
+              ) : (
+                <pre style={{ whiteSpace: 'pre-wrap', fontSize: '16px', margin: '0' }}>{post.content}</pre>
+              )}
+            </p>
+            <div style={{ fontSize: '14px', color: '#868e96' }}>by: {post.name}</div>
+          </div>
+        ))}
+      </div>
+      <hr style={{ marginBottom: '20px' }} />
     </div>
-</div>
+  </div>
 
   );
 }

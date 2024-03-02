@@ -4,6 +4,7 @@ import { PDFDocument, rgb} from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import './fileUpload.css'
 import AudioPlayer from './AudioPlayer'
+import AudioPlayer from './AudioPlayer'
 
 function FileUpload() {
     const [file, setFile] = useState(null)

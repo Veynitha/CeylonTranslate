@@ -32,6 +32,6 @@ To install and run this project locally, follow these steps:
 
 5. To run the application, run the following: 
 
- ```bash
-php artisan serve
+    ```bash
+   php artisan serve
    
